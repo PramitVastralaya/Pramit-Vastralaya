@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-display: "Cinzel", serif;
+  --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+
+  --color-maroon-950: #330A0F;
+  --color-maroon-900: #4B0E16;
+  --color-maroon-800: #64131E;
+  --color-maroon-700: #7E1C28;
+  --color-maroon-600: #9B2433;
+
+  --color-gold-700: #8C6518;
+  --color-gold-600: #AD8124;
+  --color-gold-500: #C89D42;
+  --color-gold-400: #DEB65E;
+  --color-gold-300: #F0D394;
+  --color-gold-100: #FCF7EC;
+
+  --color-cream-50: #FDFBF8;
+  --color-cream-100: #FAF6EF;
+  --color-cream-200: #F4ECE0;
+  --color-cream-300: #E9DC weep;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+/* Subtle gold luxury border motif */
+.gold-gradient-border {
+  border-image: linear-gradient(to right, #AD8124, #DEB65E, #AD8124) 1;
+}
+
+/* Indian ornamental pattern background */
+.bg-jali-pattern {
+  background-color: #FAF6EF;
+  background-image: radial-gradient(#C89D42 0.75px, transparent 0.75px), radial-gradient(#C89D42 0.75px, #FAF6EF 0.75px);
+  background-size: 30px 30px;
+  background-position: 0 0, 15px 15px;
+}

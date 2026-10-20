@@ -1,0 +1,6 @@
+{
+  "name": "Pramit Vastralay — Indian Clothing Showroom",
+  "description": "Explore premium Indian traditional clothing, pure cotton sarees, shirting, suiting, and readymade apparel at Pramit Vastralay digital showroom.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
