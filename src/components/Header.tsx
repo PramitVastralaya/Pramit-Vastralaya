@@ -147,6 +147,16 @@ export const Header: React.FC = () => {
               <Phone className="w-4 h-4" />
             </a>
 
+            {/* Mobile & Tablet Owner Portal Shortcut */}
+            <button
+              onClick={() => setCurrentView('admin')}
+              className="lg:hidden p-2 rounded-md bg-[#F4ECE0] text-[#7E1C28] border border-[#C89D42]/40 hover:bg-[#E9DCC8] active:bg-[#DFD0BA] transition-colors"
+              aria-label="Owner Admin Portal"
+              title="Owner Admin Portal"
+            >
+              <ShieldCheck className="w-4 h-4 text-[#AD8124]" />
+            </button>
+
             {/* Mobile Menu Hamburger */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}

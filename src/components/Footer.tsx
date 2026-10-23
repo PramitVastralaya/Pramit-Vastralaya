@@ -44,7 +44,8 @@ export const Footer: React.FC = () => {
             </div>
 
             <p className="text-xs text-[#FAF6EF]/80 leading-relaxed font-sans">
-              Discover quality fabrics, pure cotton sarees, bespoke shirting and pant cloth by the meter, readymade shirts, and durable denim. A trusted neighborhood destination for generations.
+              {storeInfo.footerDescription ||
+                'Discover quality fabrics, pure cotton sarees, bespoke shirting and pant cloth by the meter, readymade shirts, and durable denim. A trusted neighborhood destination for generations.'}
             </p>
 
             <div className="pt-2 text-xs text-[#FAF6EF]/70 space-y-1.5">
@@ -129,8 +130,11 @@ export const Footer: React.FC = () => {
               Showroom Notice
             </h4>
             <div className="p-3.5 rounded-lg bg-[#330A0F]/80 border border-[#8C6518]/40 text-xs text-[#FAF6EF]/80 leading-relaxed">
-              <strong className="text-white block mb-1">Online Showroom Only:</strong>
-              This website serves as our digital catalog. We do not provide online ordering or deliveries. Visit our physical store to feel fabrics and make purchases.
+              <strong className="text-white block mb-1">
+                {storeInfo.showroomNoticeTitle || 'Online Showroom Only:'}
+              </strong>
+              {storeInfo.showroomNoticeText ||
+                'This website serves as our digital catalog. We do not provide online ordering or deliveries. Visit our physical store to feel fabrics and make purchases.'}
             </div>
 
             <button

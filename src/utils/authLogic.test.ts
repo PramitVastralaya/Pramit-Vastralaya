@@ -19,6 +19,29 @@ test('admin authentication: grants access to authorized admin credentials', () =
   assert.equal(result.error, undefined);
 });
 
+test('admin authentication: grants access to pramitvastralay alias and dot variations', () => {
+  const resultAlias = validateAdminLogin(
+    'pramitvastralay@gmail.com',
+    DEFAULT_ADMIN_PASSWORD,
+    INITIAL_ADMIN_ACCOUNT
+  );
+  assert.equal(resultAlias.success, true);
+
+  const resultDots = validateAdminLogin(
+    'pramit.vastralaya@gmail.com',
+    DEFAULT_ADMIN_PASSWORD,
+    INITIAL_ADMIN_ACCOUNT
+  );
+  assert.equal(resultDots.success, true);
+
+  const resultCase = validateAdminLogin(
+    '  PramitVastralayA@gmail.com  ',
+    DEFAULT_ADMIN_PASSWORD,
+    INITIAL_ADMIN_ACCOUNT
+  );
+  assert.equal(resultCase.success, true);
+});
+
 test('admin authentication: blocks public user with different email', () => {
   const result = validateAdminLogin(
     'public_customer@gmail.com',

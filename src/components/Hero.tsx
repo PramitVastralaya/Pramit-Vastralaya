@@ -18,16 +18,20 @@ export const Hero: React.FC = () => {
             {/* Elegant Brand Kicker */}
             <div className="inline-flex items-center gap-1.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-[#8C6518]">
               <Sparkles className="w-3.5 h-3.5 text-[#C89D42]" />
-              <span>Authentic Indian Heritage &amp; Modern Textiles</span>
+              <span>{storeInfo.heroKicker || 'Authentic Indian Heritage & Modern Textiles'}</span>
             </div>
 
             {/* Required Headline */}
             <h1 className="font-serif text-2xl sm:text-4xl lg:text-5xl font-bold text-[#5B141E] leading-[1.2] sm:leading-[1.18] tracking-tight">
-              Discover Quality Fabrics &amp; Timeless Style
+              {storeInfo.heroHeadline || 'Discover Quality Fabrics & Timeless Style'}
             </h1>
 
             <p className="text-sm sm:text-lg text-[#523E37] max-w-xl mx-auto lg:mx-0 leading-relaxed font-sans">
-              Welcome to <strong className="text-[#5B141E] font-semibold">{storeInfo.storeName}</strong>, your premier neighborhood destination for pure cotton sarees, premium unstitched shirt and pant cloth by the meter, crisp readymade shirts, and classic denim.
+              {storeInfo.heroDescription || (
+                <>
+                  Welcome to <strong className="text-[#5B141E] font-semibold">{storeInfo.storeName}</strong>, your premier neighborhood destination for pure cotton sarees, premium unstitched shirt and pant cloth by the meter, crisp readymade shirts, and classic denim.
+                </>
+              )}
             </p>
 
             {/* Action Buttons */}
@@ -37,7 +41,7 @@ export const Hero: React.FC = () => {
                 onClick={() => setCategoryFilter('all')}
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-semibold text-[#FAF6EF] bg-[#7E1C28] hover:bg-[#64131E] rounded-md shadow-sm transition-all border border-[#AD8124]/40"
               >
-                <span>Explore Showroom Collections</span>
+                <span>{storeInfo.heroPrimaryCta || 'Explore Showroom Collections'}</span>
                 <ArrowRight className="w-4 h-4" />
               </a>
 
@@ -46,7 +50,7 @@ export const Hero: React.FC = () => {
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 sm:px-6 sm:py-3.5 text-xs sm:text-sm font-semibold text-[#5B141E] bg-[#F4ECE0] hover:bg-[#E9DCC8] rounded-md transition-colors border border-[#C89D42]/40"
               >
                 <MapPin className="w-4 h-4 text-[#8C6518]" />
-                <span>Visit Showroom in Person</span>
+                <span>{storeInfo.heroSecondaryCta || 'Visit Showroom in Person'}</span>
               </a>
             </div>
 
@@ -60,8 +64,8 @@ export const Hero: React.FC = () => {
           <div className="lg:col-span-6 relative">
             <div className="relative rounded-xl overflow-hidden shadow-lg border border-[#C89D42]/30 bg-[#F4ECE0]">
               <img
-                src="/src/assets/images/hero_vastralay_showroom_1792387121760.jpg"
-                alt="Pramit Vastralay Showroom Interior with traditional sarees and textile bolts"
+                src={storeInfo.heroImage || '/src/assets/images/hero_vastralay_showroom_1792387121760.jpg'}
+                alt={`${storeInfo.storeName} Showroom Interior`}
                 className="w-full h-[240px] sm:h-[400px] lg:h-[460px] object-cover object-center transform hover:scale-[1.02] transition-transform duration-700"
                 loading="eager"
                 referrerPolicy="no-referrer"
@@ -72,10 +76,10 @@ export const Hero: React.FC = () => {
               <div className="absolute bottom-4 left-4 right-4 bg-[#FAF7F2]/95 backdrop-blur-md p-4 rounded-lg border border-[#C89D42]/40 shadow-md flex items-center justify-between">
                 <div>
                   <span className="font-serif text-sm font-bold text-[#5B141E] block">
-                    Pramit Vastralay Showroom
+                    {storeInfo.heroFloatingTitle || `${storeInfo.storeName} Showroom`}
                   </span>
                   <span className="text-xs text-[#6F5B52] block">
-                    Open Daily 10:00 AM – 9:00 PM • Station Road Area
+                    {storeInfo.heroFloatingSubtitle || 'Open Daily 10:00 AM – 9:00 PM • Station Road Area'}
                   </span>
                 </div>
                 <a
@@ -96,8 +100,12 @@ export const Hero: React.FC = () => {
               <Award className="w-4 h-4 sm:w-5 sm:h-5 text-[#8C6518]" />
             </div>
             <div>
-              <h4 className="text-xs sm:text-sm font-bold text-[#5B141E] leading-snug">100% Genuine</h4>
-              <p className="text-[10px] sm:text-xs text-[#705E56] mt-0.5 leading-tight">Handlooms &amp; mill cottons</p>
+              <h4 className="text-xs sm:text-sm font-bold text-[#5B141E] leading-snug">
+                {storeInfo.heroBadge1Title || '100% Genuine'}
+              </h4>
+              <p className="text-[10px] sm:text-xs text-[#705E56] mt-0.5 leading-tight">
+                {storeInfo.heroBadge1Sub || 'Handlooms & mill cottons'}
+              </p>
             </div>
           </div>
 
@@ -106,8 +114,12 @@ export const Hero: React.FC = () => {
               <Scissors className="w-4 h-4 sm:w-5 sm:h-5 text-[#8C6518]" />
             </div>
             <div>
-              <h4 className="text-xs sm:text-sm font-bold text-[#5B141E] leading-snug">Meter Cuts</h4>
-              <p className="text-[10px] sm:text-xs text-[#705E56] mt-0.5 leading-tight">Bespoke custom length</p>
+              <h4 className="text-xs sm:text-sm font-bold text-[#5B141E] leading-snug">
+                {storeInfo.heroBadge2Title || 'Meter Cuts'}
+              </h4>
+              <p className="text-[10px] sm:text-xs text-[#705E56] mt-0.5 leading-tight">
+                {storeInfo.heroBadge2Sub || 'Bespoke custom length'}
+              </p>
             </div>
           </div>
 
@@ -116,8 +128,12 @@ export const Hero: React.FC = () => {
               <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-[#8C6518]" />
             </div>
             <div>
-              <h4 className="text-xs sm:text-sm font-bold text-[#5B141E] leading-snug">Fair Rates</h4>
-              <p className="text-[10px] sm:text-xs text-[#705E56] mt-0.5 leading-tight">Transparent showroom prices</p>
+              <h4 className="text-xs sm:text-sm font-bold text-[#5B141E] leading-snug">
+                {storeInfo.heroBadge3Title || 'Fair Rates'}
+              </h4>
+              <p className="text-[10px] sm:text-xs text-[#705E56] mt-0.5 leading-tight">
+                {storeInfo.heroBadge3Sub || 'Transparent showroom prices'}
+              </p>
             </div>
           </div>
 
@@ -126,8 +142,12 @@ export const Hero: React.FC = () => {
               <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-[#8C6518]" />
             </div>
             <div>
-              <h4 className="text-xs sm:text-sm font-bold text-[#5B141E] leading-snug">In-Store Touch</h4>
-              <p className="text-[10px] sm:text-xs text-[#705E56] mt-0.5 leading-tight">Feel fabric before buying</p>
+              <h4 className="text-xs sm:text-sm font-bold text-[#5B141E] leading-snug">
+                {storeInfo.heroBadge4Title || 'In-Store Touch'}
+              </h4>
+              <p className="text-[10px] sm:text-xs text-[#705E56] mt-0.5 leading-tight">
+                {storeInfo.heroBadge4Sub || 'Feel fabric before buying'}
+              </p>
             </div>
           </div>
         </div>

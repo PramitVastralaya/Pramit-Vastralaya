@@ -433,6 +433,88 @@ export const INITIAL_STORE_INFO: StoreInfo = {
   googleMapsUrl: 'https://maps.google.com/?q=Pramit+Vastralay+Showroom',
   socialInstagram: 'https://instagram.com/pramitvastralay',
   socialFacebook: 'https://facebook.com/pramitvastralay',
+
+  // Hero Section Defaults
+  heroKicker: 'Authentic Indian Heritage & Modern Textiles',
+  heroHeadline: 'Discover Quality Fabrics & Timeless Style',
+  heroDescription:
+    'Welcome to Pramit Vastralay, your premier neighborhood destination for pure cotton sarees, premium unstitched shirt and pant cloth by the meter, crisp readymade shirts, and classic denim.',
+  heroImage: '/src/assets/images/hero_vastralay_showroom_1792387121760.jpg',
+  heroFloatingTitle: 'Pramit Vastralay Showroom',
+  heroFloatingSubtitle: 'Open Daily 10:00 AM – 9:00 PM • Station Road Area',
+  heroPrimaryCta: 'Explore Showroom Collections',
+  heroSecondaryCta: 'Visit Showroom in Person',
+  heroBadge1Title: '100% Genuine',
+  heroBadge1Sub: 'Handloom & mill weaves',
+  heroBadge2Title: 'Meter Cuts',
+  heroBadge2Sub: 'Bespoke tailoring length',
+  heroBadge3Title: 'Open 7 Days',
+  heroBadge3Sub: '10:00 AM – 9:00 PM',
+  heroBadge4Title: 'Honest Pricing',
+  heroBadge4Sub: 'Direct retail value',
+
+  // About Section Defaults
+  aboutKicker: 'Our Heritage & Tradition',
+  aboutHeadline: 'About Pramit Vastralay',
+  aboutParagraph1:
+    'At Pramit Vastralay, we believe every piece of clothing tells a story of craftsmanship, dignity, and cultural pride. Our showroom was established to bring customers authentic, high-grade fabrics directly from India’s finest looms and trusted spinning mills.',
+  aboutParagraph2:
+    'Whether you are shopping for graceful pure cotton sarees for festivals and pujas, selecting custom shirt and pant cloth by the meter for bespoke tailoring, or choosing everyday comfortable readymade shirts and jeans, we take pride in offering genuine materials with honest, transparent pricing.',
+  aboutImage: '/src/assets/images/hero_vastralay_showroom_1792387121760.jpg',
+  aboutCardTitle: 'Pramit Vastralay',
+  aboutCardSubtitle: 'Authentic Textile Heritage',
+  aboutCardText: 'Dedicated to honest trade, genuine handlooms, and personalized retail hospitality.',
+
+  // Why Choose Us Defaults
+  whyUsKicker: 'The Pramit Vastralay Standard',
+  whyUsHeadline: 'Why Choose Us',
+  whyUsSubtitle:
+    'Four key commitments that have made Pramit Vastralay the trusted clothing and fabric showroom for families and professionals alike.',
+  whyUsReason1Title: 'Handpicked Handloom & Mill Fabrics',
+  whyUsReason1Desc:
+    'Every saree, shirting bolt, and denim roll is inspected for fiber purity, thread count, and colorfastness before reaching our showroom shelves.',
+  whyUsReason2Title: 'Cut-to-Order Precise Meterage',
+  whyUsReason2Desc:
+    'Need 1.6 meters for a full-sleeve shirt or 1.25 meters for a tailored trouser? We cut fabrics to your exact bespoke tailoring requirements without waste.',
+  whyUsReason3Title: 'Direct, Transparent Fair Pricing',
+  whyUsReason3Desc:
+    'Clear prices displayed with zero hidden charges. We offer wholesale-tier value directly to retail customers in our neighborhood.',
+  whyUsReason4Title: 'Warm In-Store Hospitality & Guidance',
+  whyUsReason4Desc:
+    'Feel the fabric weight, test the drape in natural light, and receive experienced tailoring advice from our dedicated showroom staff.',
+
+  // Featured Collections Defaults
+  featuredKicker: 'Curated Showroom Highlights',
+  featuredHeadline: 'Featured Collections',
+  featuredSubtitle:
+    'Specially selected textiles and garments for upcoming weddings, festivals, and daily style.',
+  featuredCard1Tag: 'Traditional Weaves',
+  featuredCard1Title: 'Festive & Bridal Sarees',
+  featuredCard1Desc:
+    'Fine count pure handloom cotton sarees with woven golden zari borders, peacock pallus, and graceful motifs.',
+  featuredCard1Image: '/src/assets/images/cat_cotton_sarees_1792387123642.jpg',
+  featuredCard1Cat: 'cotton-sarees',
+
+  featuredCard2Tag: 'Bespoke Tailoring',
+  featuredCard2Title: 'Shirting & Suiting Cloth',
+  featuredCard2Desc:
+    'Giza cottons, crisp white poplins, and durable trouser drills sold by the meter. Cut to your exact measurements.',
+  featuredCard2Image: '/src/assets/images/cat_cotton_shirting_1792387123731.jpg',
+  featuredCard2Cat: 'cotton-shirt-cloth',
+
+  featuredCard3Tag: 'Ready to Wear',
+  featuredCard3Title: 'Readymade Shirts & Denim',
+  featuredCard3Desc:
+    'Crisp cotton formal shirts and rugged 12.5oz straight-fit jeans built for all-day comfort and long-lasting wear.',
+  featuredCard3Image: '/src/assets/images/cat_readymade_shirts_1792387124762.jpg',
+  featuredCard3Cat: 'readymade-shirts',
+
+  // Footer & Notices Defaults
+  footerDescription:
+    'Discover quality fabrics, pure cotton sarees, bespoke shirting and pant cloth by the meter, readymade shirts, and durable denim. A trusted neighborhood destination for generations.',
+  showroomNoticeTitle: 'Online Showroom Only:',
+  showroomNoticeText:
+    'This website serves as our digital catalog. We do not provide online ordering or deliveries. Visit our physical store to feel fabrics and make purchases.',
 };
 
 export const INITIAL_GALLERY_IMAGES: ShowcaseImage[] = [

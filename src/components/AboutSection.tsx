@@ -13,8 +13,8 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-5 relative">
             <div className="rounded-2xl overflow-hidden border-2 border-[#C89D42]/30 shadow-lg bg-[#FAF6EF]">
               <img
-                src="/src/assets/images/hero_vastralay_showroom_1792387121760.jpg"
-                alt="Pramit Vastralay Heritage Interior"
+                src={storeInfo.aboutImage || '/src/assets/images/hero_vastralay_showroom_1792387121760.jpg'}
+                alt={`${storeInfo.storeName} Heritage Interior`}
                 className="w-full h-[400px] object-cover"
                 loading="lazy"
                 referrerPolicy="no-referrer"
@@ -23,13 +23,13 @@ export const AboutSection: React.FC = () => {
             {/* Overlay Accent Card */}
             <div className="absolute -bottom-6 -right-4 sm:right-6 bg-white p-5 rounded-xl border border-[#C89D42]/50 shadow-md max-w-xs hidden sm:block">
               <span className="font-serif text-lg font-bold text-[#5B141E] block">
-                Pramit Vastralay
+                {storeInfo.aboutCardTitle || storeInfo.storeName}
               </span>
               <span className="text-xs text-[#8C6518] font-medium block mt-0.5">
-                Authentic Textile Heritage
+                {storeInfo.aboutCardSubtitle || 'Authentic Textile Heritage'}
               </span>
               <p className="text-[11px] text-[#6F5B52] mt-1.5 leading-snug">
-                Dedicated to honest trade, genuine handlooms, and personalized retail hospitality.
+                {storeInfo.aboutCardText || 'Dedicated to honest trade, genuine handlooms, and personalized retail hospitality.'}
               </p>
             </div>
           </div>
@@ -38,19 +38,24 @@ export const AboutSection: React.FC = () => {
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-[#8C6518]">
               <Sparkles className="w-3.5 h-3.5 text-[#C89D42]" />
-              <span>Our Heritage &amp; Tradition</span>
+              <span>{storeInfo.aboutKicker || 'Our Heritage & Tradition'}</span>
             </div>
 
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#5B141E] tracking-tight">
-              About Pramit Vastralay
+              {storeInfo.aboutHeadline || `About ${storeInfo.storeName}`}
             </h2>
 
             <p className="text-base text-[#523E37] leading-relaxed">
-              At <strong>{storeInfo.storeName}</strong>, we believe every piece of clothing tells a story of craftsmanship, dignity, and cultural pride. Our showroom was established to bring customers authentic, high-grade fabrics directly from India’s finest looms and trusted spinning mills.
+              {storeInfo.aboutParagraph1 || (
+                <>
+                  At <strong>{storeInfo.storeName}</strong>, we believe every piece of clothing tells a story of craftsmanship, dignity, and cultural pride. Our showroom was established to bring customers authentic, high-grade fabrics directly from India’s finest looms and trusted spinning mills.
+                </>
+              )}
             </p>
 
             <p className="text-sm text-[#68534A] leading-relaxed">
-              Whether you are shopping for graceful pure cotton sarees for festivals and pujas, selecting custom shirt and pant cloth by the meter for bespoke tailoring, or choosing everyday comfortable readymade shirts and jeans, we take pride in offering genuine materials with honest, transparent pricing.
+              {storeInfo.aboutParagraph2 ||
+                'Whether you are shopping for graceful pure cotton sarees for festivals and pujas, selecting custom shirt and pant cloth by the meter for bespoke tailoring, or choosing everyday comfortable readymade shirts and jeans, we take pride in offering genuine materials with honest, transparent pricing.'}
             </p>
 
             {/* Core Values Grid */}

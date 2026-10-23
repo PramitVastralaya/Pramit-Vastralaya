@@ -4,7 +4,7 @@ import { useStore } from '../context/StoreContext.tsx';
 import type { CategoryId } from '../types/store.ts';
 
 export const FeaturedCollections: React.FC = () => {
-  const { setCategoryFilter } = useStore();
+  const { storeInfo, setCategoryFilter } = useStore();
 
   const handleSelectCollection = (catId: CategoryId) => {
     setCategoryFilter(catId);
@@ -21,13 +21,14 @@ export const FeaturedCollections: React.FC = () => {
           <div>
             <div className="inline-flex items-center gap-1.5 text-xs font-semibold uppercase tracking-widest text-[#8C6518] mb-1.5">
               <Sparkles className="w-3.5 h-3.5 text-[#C89D42]" />
-              <span>Curated Showroom Highlights</span>
+              <span>{storeInfo.featuredKicker || 'Curated Showroom Highlights'}</span>
             </div>
             <h2 className="font-serif text-3xl font-bold text-[#5B141E] tracking-tight">
-              Featured Collections
+              {storeInfo.featuredHeadline || 'Featured Collections'}
             </h2>
             <p className="mt-1.5 text-sm text-[#68534A]">
-              Specially selected textiles and garments for upcoming weddings, festivals, and daily style.
+              {storeInfo.featuredSubtitle ||
+                'Specially selected textiles and garments for upcoming weddings, festivals, and daily style.'}
             </p>
           </div>
 
@@ -42,11 +43,11 @@ export const FeaturedCollections: React.FC = () => {
 
         {/* 3 Featured Collection Showcases */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Card 1: Handloom & Pure Cotton Sarees */}
+          {/* Card 1 */}
           <div className="relative rounded-2xl overflow-hidden shadow-sm group bg-[#F4ECE0] border border-[#E5DAC8] flex flex-col justify-end min-h-[360px]">
             <img
-              src="/src/assets/images/cat_cotton_sarees_1792387123642.jpg"
-              alt="Handloom Sarees"
+              src={storeInfo.featuredCard1Image || '/src/assets/images/cat_cotton_sarees_1792387123642.jpg'}
+              alt={storeInfo.featuredCard1Title || 'Handloom Sarees'}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
               referrerPolicy="no-referrer"
@@ -54,16 +55,17 @@ export const FeaturedCollections: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
             <div className="relative p-6 text-white space-y-2">
               <span className="text-[11px] font-bold tracking-widest uppercase text-[#DEB65E]">
-                Traditional Weaves
+                {storeInfo.featuredCard1Tag || 'Traditional Weaves'}
               </span>
               <h3 className="font-serif text-2xl font-bold">
-                Festive &amp; Bridal Sarees
+                {storeInfo.featuredCard1Title || 'Festive & Bridal Sarees'}
               </h3>
               <p className="text-xs text-white/85 leading-relaxed">
-                Chanderi, Sambalpuri Ikat, and pure cotton drapes with fine zari borders.
+                {storeInfo.featuredCard1Desc ||
+                  'Chanderi, Sambalpuri Ikat, and pure cotton drapes with fine zari borders.'}
               </p>
               <button
-                onClick={() => handleSelectCollection('cotton-sarees')}
+                onClick={() => handleSelectCollection(storeInfo.featuredCard1Cat || 'cotton-sarees')}
                 className="pt-2 text-xs font-bold text-[#DEB65E] hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>Explore Saree Gallery</span>
@@ -72,11 +74,11 @@ export const FeaturedCollections: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 2: Bespoke Shirting & Suiting Cloth */}
+          {/* Card 2 */}
           <div className="relative rounded-2xl overflow-hidden shadow-sm group bg-[#F4ECE0] border border-[#E5DAC8] flex flex-col justify-end min-h-[360px]">
             <img
-              src="/src/assets/images/cat_cotton_shirting_1792387123731.jpg"
-              alt="Bespoke Shirting"
+              src={storeInfo.featuredCard2Image || '/src/assets/images/cat_cotton_shirting_1792387123731.jpg'}
+              alt={storeInfo.featuredCard2Title || 'Bespoke Shirting'}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
               referrerPolicy="no-referrer"
@@ -84,16 +86,17 @@ export const FeaturedCollections: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
             <div className="relative p-6 text-white space-y-2">
               <span className="text-[11px] font-bold tracking-widest uppercase text-[#DEB65E]">
-                Bespoke Tailoring
+                {storeInfo.featuredCard2Tag || 'Bespoke Tailoring'}
               </span>
               <h3 className="font-serif text-2xl font-bold">
-                Luxury Unstitched Fabrics
+                {storeInfo.featuredCard2Title || 'Luxury Unstitched Fabrics'}
               </h3>
               <p className="text-xs text-white/85 leading-relaxed">
-                60s &amp; 80s count Giza cotton shirt cloth and heavy twill trouser cloth sold by the meter.
+                {storeInfo.featuredCard2Desc ||
+                  '60s & 80s count Giza cotton shirt cloth and heavy twill trouser cloth sold by the meter.'}
               </p>
               <button
-                onClick={() => handleSelectCollection('cotton-shirt-cloth')}
+                onClick={() => handleSelectCollection(storeInfo.featuredCard2Cat || 'cotton-shirt-cloth')}
                 className="pt-2 text-xs font-bold text-[#DEB65E] hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>Explore Shirting Fabrics</span>
@@ -102,11 +105,11 @@ export const FeaturedCollections: React.FC = () => {
             </div>
           </div>
 
-          {/* Card 3: Menswear & Everyday Essentials */}
+          {/* Card 3 */}
           <div className="relative rounded-2xl overflow-hidden shadow-sm group bg-[#F4ECE0] border border-[#E5DAC8] flex flex-col justify-end min-h-[360px]">
             <img
-              src="/src/assets/images/cat_readymade_shirts_1792387124762.jpg"
-              alt="Menswear & Jeans"
+              src={storeInfo.featuredCard3Image || '/src/assets/images/cat_readymade_shirts_1792387124762.jpg'}
+              alt={storeInfo.featuredCard3Title || 'Menswear & Jeans'}
               className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
               referrerPolicy="no-referrer"
@@ -114,16 +117,17 @@ export const FeaturedCollections: React.FC = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent" />
             <div className="relative p-6 text-white space-y-2">
               <span className="text-[11px] font-bold tracking-widest uppercase text-[#DEB65E]">
-                Ready-to-Wear
+                {storeInfo.featuredCard3Tag || 'Ready-to-Wear'}
               </span>
               <h3 className="font-serif text-2xl font-bold">
-                Shirts &amp; Rugged Denim
+                {storeInfo.featuredCard3Title || 'Shirts & Rugged Denim'}
               </h3>
               <p className="text-xs text-white/85 leading-relaxed">
-                Festive cotton kurtas, office formals, and 12.5oz regular fit denim jeans.
+                {storeInfo.featuredCard3Desc ||
+                  'Festive cotton kurtas, office formals, and 12.5oz regular fit denim jeans.'}
               </p>
               <button
-                onClick={() => handleSelectCollection('readymade-shirts')}
+                onClick={() => handleSelectCollection(storeInfo.featuredCard3Cat || 'readymade-shirts')}
                 className="pt-2 text-xs font-bold text-[#DEB65E] hover:text-white flex items-center gap-1.5 transition-colors cursor-pointer"
               >
                 <span>Explore Ready Shirts</span>

@@ -62,6 +62,74 @@ export interface StoreInfo {
   googleMapsUrl: string;
   socialInstagram: string;
   socialFacebook: string;
+
+  // Hero Section Customization
+  heroKicker?: string;
+  heroHeadline?: string;
+  heroDescription?: string;
+  heroImage?: string;
+  heroFloatingTitle?: string;
+  heroFloatingSubtitle?: string;
+  heroPrimaryCta?: string;
+  heroSecondaryCta?: string;
+  heroBadge1Title?: string;
+  heroBadge1Sub?: string;
+  heroBadge2Title?: string;
+  heroBadge2Sub?: string;
+  heroBadge3Title?: string;
+  heroBadge3Sub?: string;
+  heroBadge4Title?: string;
+  heroBadge4Sub?: string;
+
+  // About Us Section Customization
+  aboutKicker?: string;
+  aboutHeadline?: string;
+  aboutParagraph1?: string;
+  aboutParagraph2?: string;
+  aboutImage?: string;
+  aboutCardTitle?: string;
+  aboutCardSubtitle?: string;
+  aboutCardText?: string;
+
+  // Why Choose Us Section Customization
+  whyUsKicker?: string;
+  whyUsHeadline?: string;
+  whyUsSubtitle?: string;
+  whyUsReason1Title?: string;
+  whyUsReason1Desc?: string;
+  whyUsReason2Title?: string;
+  whyUsReason2Desc?: string;
+  whyUsReason3Title?: string;
+  whyUsReason3Desc?: string;
+  whyUsReason4Title?: string;
+  whyUsReason4Desc?: string;
+
+  // Featured Collections Customization
+  featuredKicker?: string;
+  featuredHeadline?: string;
+  featuredSubtitle?: string;
+  featuredCard1Tag?: string;
+  featuredCard1Title?: string;
+  featuredCard1Desc?: string;
+  featuredCard1Image?: string;
+  featuredCard1Cat?: CategoryId;
+
+  featuredCard2Tag?: string;
+  featuredCard2Title?: string;
+  featuredCard2Desc?: string;
+  featuredCard2Image?: string;
+  featuredCard2Cat?: CategoryId;
+
+  featuredCard3Tag?: string;
+  featuredCard3Title?: string;
+  featuredCard3Desc?: string;
+  featuredCard3Image?: string;
+  featuredCard3Cat?: CategoryId;
+
+  // Footer & Notices Customization
+  footerDescription?: string;
+  showroomNoticeTitle?: string;
+  showroomNoticeText?: string;
 }
 
 export type SortOption =

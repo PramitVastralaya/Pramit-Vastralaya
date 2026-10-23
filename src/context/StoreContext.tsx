@@ -49,6 +49,7 @@ interface StoreContextType {
   updateProduct: (id: string, updates: Partial<Product>) => void;
   deleteProduct: (id: string) => void;
   updateStoreInfo: (updates: Partial<StoreInfo>) => void;
+  updateCategory: (id: CategoryId, updates: Partial<CategoryInfo>) => void;
   // Showcase Gallery State & CRUD
   galleryImages: ShowcaseImage[];
   addGalleryImage: (image: Omit<ShowcaseImage, 'id'>) => void;
@@ -56,6 +57,7 @@ interface StoreContextType {
   deleteGalleryImage: (id: string) => void;
   resetGalleryImages: () => void;
   resetToDefaults: () => void;
+  resetAdminCredentials: () => void;
 }
 
 const STORAGE_KEYS = {
@@ -93,7 +95,7 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [storeInfo, setStoreInfo] = useState<StoreInfo>(() => {
     try {
       const saved = localStorage.getItem(STORAGE_KEYS.STORE_INFO);
-      if (saved) return JSON.parse(saved);
+      if (saved) return { ...INITIAL_STORE_INFO, ...JSON.parse(saved) };
     } catch {
       // fallback
     }
@@ -122,8 +124,8 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return null;
   });
 
-  // View state: 'showroom' or 'admin' (can also check URL query ?view=admin)
-  const [currentView, setCurrentView] = useState<'showroom' | 'admin'>(() => {
+  // View state: 'showroom' or 'admin' (sync with URL query ?view=admin or /admin)
+  const [currentView, setCurrentViewState] = useState<'showroom' | 'admin'>(() => {
     if (typeof window !== 'undefined') {
       const params = new URLSearchParams(window.location.search);
       if (params.get('view') === 'admin' || window.location.pathname === '/admin') {
@@ -132,6 +134,40 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
     return 'showroom';
   });
+
+  const setCurrentView = (view: 'showroom' | 'admin') => {
+    setCurrentViewState(view);
+    if (typeof window !== 'undefined') {
+      try {
+        const url = new URL(window.location.href);
+        if (view === 'admin') {
+          url.searchParams.set('view', 'admin');
+        } else {
+          url.searchParams.delete('view');
+        }
+        window.history.pushState({ view }, '', url.toString());
+      } catch {
+        // ignore
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      try {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('view') === 'admin' || window.location.pathname === '/admin') {
+          setCurrentViewState('admin');
+        } else {
+          setCurrentViewState('showroom');
+        }
+      } catch {
+        // ignore
+      }
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
 
   // Gallery images persistence
   const [galleryImages, setGalleryImages] = useState<ShowcaseImage[]>(() => {
@@ -283,6 +319,12 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     setStoreInfo((prev) => ({ ...prev, ...updates }));
   };
 
+  const updateCategory = (id: CategoryId, updates: Partial<CategoryInfo>) => {
+    setCategories((prev) =>
+      prev.map((cat) => (cat.id === id ? { ...cat, ...updates } : cat))
+    );
+  };
+
   // Gallery CRUD Operations
   const addGalleryImage = (newImageData: Omit<ShowcaseImage, 'id'>) => {
     const newImage: ShowcaseImage = {
@@ -325,6 +367,15 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   };
 
+  const resetAdminCredentials = () => {
+    setAdminAccount(INITIAL_ADMIN_ACCOUNT);
+    try {
+      localStorage.removeItem(STORAGE_KEYS.ADMIN_ACCOUNT);
+    } catch {
+      // ignore
+    }
+  };
+
   return (
     <StoreContext.Provider
       value={{
@@ -351,12 +402,14 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         updateProduct,
         deleteProduct,
         updateStoreInfo,
+        updateCategory,
         galleryImages,
         addGalleryImage,
         updateGalleryImage,
         deleteGalleryImage,
         resetGalleryImages,
         resetToDefaults,
+        resetAdminCredentials,
       }}
     >
       {children}
